@@ -1,0 +1,6 @@
+float fallSpeed = 1.0f;                // blocks per second
+int linesCleared = 0;
+
+void UpdateDifficulty() {
+    fallSpeed = 1.0f + (linesCleared / 10) * 0.2f; // +0.2s per 10 lines
+}
