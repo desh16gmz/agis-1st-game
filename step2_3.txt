@@ -1,0 +1,5 @@
+public struct GridCell {
+    public bool IsOccupied;          // true if a block is locked in this cell
+    public BlockType Type;           // enum (Empty, Red, Blue, Green, …)
+    public Vector2Int Position;      // (x, y) grid coordinates
+}
