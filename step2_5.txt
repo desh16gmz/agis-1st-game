@@ -1,0 +1,9 @@
+public class Piece : MonoBehaviour {
+    public List<Block> Blocks;                 // child Block objects
+    public Vector2Int Origin;                  // pivot cell in grid
+    public PieceShape Shape;                   // enum or scriptable object
+
+    // Rotation, translation helpers
+    public void RotateClockwise(GridController grid) { … }
+    public void Move(Vector2Int delta, GridController grid) { … }
+}
