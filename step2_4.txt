@@ -1,0 +1,14 @@
+public class Block : MonoBehaviour {
+    public BlockType Type;                     // visual / scoring
+    public Vector2Int GridPosition;            // current cell in GridController
+    private Rigidbody2D rb;
+    private Collider2D col;
+
+    void Awake() {
+        rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
+    }
+
+    // Called each frame to sync physics → logical grid
+    public void SyncToGrid(GridController grid) { … }
+}
