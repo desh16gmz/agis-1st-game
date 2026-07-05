@@ -1,0 +1,10 @@
+GameRoot
+│
+├─ InputManager            // maps player input to actions
+├─ GameManager              // game state (Running, Paused, GameOver)
+├─ GridController           // logical grid, spawn & lock logic
+├─ PieceSpawner             // creates falling pieces
+├─ PlayerController         // character movement & interaction
+├─ PhysicsFacade            // thin wrapper around Physics2D (raycasts, collisions)
+├─ UIController             // HUD, score, level UI
+└─ AudioManager             // SFX/Music playback
