@@ -1,0 +1,11 @@
+public class GridController : MonoBehaviour {
+    public int Width = 10;
+    public int Height = 20;
+    private GridCell[,] cells;
+
+    // Core APIs
+    public bool IsCellFree(Vector2Int pos);
+    public void LockPiece(Piece piece);
+    public List<int> GetCompleteRows();        // returns row indices to clear
+    public void ClearRows(List<int> rows);
+}
