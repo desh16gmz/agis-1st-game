@@ -1,0 +1,51 @@
+using UnityEngine;
+
+public class GridManager : MonoBehaviour
+{
+    public static GridManager Instance { get; private set; }
+
+    // Grid dimensions (editable in Inspector)
+    public int columns = 10;
+    public int rows    = 20;
+    public float cellSize = 1f;          // world units per cell
+    public Vector2 origin = Vector2.zero; // world position of bottom‑left cell
+
+    // Occupancy map: true = cell is taken by a static block
+    private bool[,] occupied;
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        Instance = this;
+        occupied = new bool[columns, rows];
+    }
+
+    // ---------- Coordinate helpers ----------
+    public Vector2 GridToWorld(int x, int y)
+    {
+        return origin + new Vector2(x + 0.5f, y + 0.5f) * cellSize;
+    }
+
+    public bool WorldToGrid(Vector2 worldPos, out int x, out int y)
+    {
+        Vector2 relative = worldPos - origin;
+        x = Mathf.FloorToInt(relative.x / cellSize);
+        y = Mathf.FloorToInt(relative.y / cellSize);
+        return x >= 0 && x < columns && y >= 0 && y < rows;
+    }
+
+    // ---------- Occupancy ----------
+    public bool IsCellFree(int x, int y) => !occupied[x, y];
+
+    public void SetCell(int x, int y, bool filled) => occupied[x, y] = filled;
+
+    // Snap a Transform to the nearest grid cell (used when a block lands)
+    public void SnapToGrid(Transform tr)
+    {
+        if (WorldToGrid(tr.position, out int x, out int y))
+        {
+            tr.position = GridToWorld(x, y);
+            SetCell(x, y, true);
+        }
+    }
+}
