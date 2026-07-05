@@ -1,0 +1,3 @@
+Engine: Unity 2022 LTS
+Language: C# (Unity’s built‑in MonoBehaviour system)
+Target Platforms: PC (Windows/macOS/Linux), WebGL, Mobile (iOS/Android)
