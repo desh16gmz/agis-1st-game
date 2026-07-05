@@ -1,0 +1,45 @@
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
+public class Block : MonoBehaviour
+{
+    private Rigidbody2D rb;
+    private bool landed = false;
+
+    void Awake() => rb = GetComponent<Rigidbody2D>();
+
+    void FixedUpdate()
+    {
+        if (landed) return;
+
+        // Simple gravity is already applied by Rigidbody2D.
+        // Check if we are standing on something or reached bottom.
+        if (IsGrounded())
+        {
+            landed = true;
+            rb.bodyType = RigidbodyType2D.Static; // stop movement
+            GridManager.Instance.SnapToGrid(transform);
+        }
+    }
+
+    // Raycast downwards a small distance to see if a cell below is occupied.
+    bool IsGrounded()
+    {
+        // Slight offset to avoid self‑collision
+        float rayLength = GridManager.Instance.cellSize * 0.55f;
+        RaycastHit2D hit = Physics2D.BoxCast(
+            transform.position,
+            GetComponent<BoxCollider2D>().size * 0.9f,
+            0f,
+            Vector2.down,
+            rayLength,
+            LayerMask.GetMask("Block") // put blocks on a dedicated layer
+        );
+        // Also consider bottom of grid as ground
+        if (GridManager.Instance.WorldToGrid(transform.position, out int x, out int y))
+        {
+            if (y == 0) return true;
+        }
+        return hit.collider != null;
+    }
+}
