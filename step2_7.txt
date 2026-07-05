@@ -1,0 +1,5 @@
+[CreateAssetMenu(menuName = "ShiftBlocks/PieceShape")]
+public class PieceShape : ScriptableObject {
+    public Vector2Int[] BlockOffsets;   // relative to pivot
+    public BlockType DefaultType;
+}
