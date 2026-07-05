@@ -1,0 +1,14 @@
+class PieceBag {
+    private Queue<PieceShape> bag = new Queue<PieceShape>();
+    private PieceShape[] allShapes; // set in inspector
+
+    public PieceShape Next() {
+        if (bag.Count == 0) ShuffleAndFill();
+        return bag.Dequeue();
+    }
+
+    private void ShuffleAndFill() {
+        var shuffled = allShapes.OrderBy(_ => Random.value).ToArray();
+        foreach (var s in shuffled) bag.Enqueue(s);
+    }
+}
