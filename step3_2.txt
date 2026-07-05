@@ -1,0 +1,27 @@
+using UnityEngine;
+
+public class BlockSpawner : MonoBehaviour
+{
+    public GameObject blockPrefab;      // assign a prefab with a Rigidbody2D + BoxCollider2D + Block.cs
+    public float spawnInterval = 1.5f;
+
+    private float timer;
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer >= spawnInterval)
+        {
+            SpawnBlock();
+            timer = 0f;
+        }
+    }
+
+    void SpawnBlock()
+    {
+        int col = Random.Range(0, GridManager.Instance.columns);
+        // spawn just above the top row
+        Vector2 spawnPos = GridManager.Instance.GridToWorld(col, GridManager.Instance.rows);
+        Instantiate(blockPrefab, spawnPos, Quaternion.identity);
+    }
+}
