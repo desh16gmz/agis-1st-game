@@ -1,0 +1,16 @@
+Assets/
+├─ Scripts/
+│   ├─ Core/          (GameManager, GridController, PieceSpawner)
+│   ├─ Player/        (PlayerController, InputManager)
+│   ├─ Blocks/        (Block, Piece, PieceShape)
+│   └─ UI/            (UIController)
+├─ Prefabs/
+│   ├─ Block.prefab
+│   ├─ Piece.prefab
+│   └─ Player.prefab
+├─ ScriptableObjects/
+│   └─ PieceShapes/*.asset
+├─ Sprites/
+│   └─ Blocks/ (colored block sprites)
+└─ Audio/
+    └─ SFX/ (drop, lock, clear, jump)
