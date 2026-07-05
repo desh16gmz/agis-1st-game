@@ -1,0 +1,30 @@
+Assets/
+│
+├─ Sprites/
+│   ├─ Player.png
+│   ├─ Block.png
+│   ├─ Background.png
+│   └─ UI/
+│       ├─ ButtonNormal.png
+│       ├─ ButtonHover.png
+│       └─ ButtonPressed.png
+│
+├─ Audio/
+│   ├─ SFX/
+│   │   ├─ BlockFall.wav
+│   │   ├─ Jump.wav
+│   │   └─ Collect.wav
+│   └─ Music/
+│       └─ ThemeLoop.wav
+│
+├─ Scripts/
+│   ├─ AudioManager.cs
+│   ├─ UIManager.cs
+│   └─ VisualSetup.cs
+│
+└─ Prefabs/
+    ├─ Player.prefab
+    ├─ Block.prefab
+    └─ UI/
+        ├─ Canvas.prefab
+        └─ Button.prefab
